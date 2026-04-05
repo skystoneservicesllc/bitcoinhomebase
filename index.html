@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bitcoin: Everything You Need To Know | BitcoinHomeBase.com</title>
+<meta name="description" content="The plain-English Bitcoin guide for beginners. 15 chapters, step-by-step walkthroughs, and bonus materials. Launch price $17 (reg $27). 60-day money-back guarantee.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bitcoin: #F7931A;
+  --bitcoin-dark: #E8850F;
+  --gold: #FFD700;
+  --dark: #0D1117;
+  --darker: #080B10;
+  --card: #161B22;
+  --card-border: #21262D;
+  --text: #E6EDF3;
+  --text-muted: #8B949E;
+  --green: #3FB950;
+  --red: #F85149;
+  --blue: #58A6FF;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--darker); color: var(--text); line-height: 1.7; overflow-x: hidden; }
+.container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+.container-wide { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+.announcement { background: linear-gradient(90deg, var(--bitcoin), #E8850F, var(--bitcoin)); color: #000; text-align: center; padding: 10px 16px; font-weight: 700; font-size: 14px; letter-spacing: 0.5px; }
+.announcement span { animation: pulse-text 2s ease-in-out infinite; display: inline-block; }
+@keyframes pulse-text { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+.hero { background: linear-gradient(180deg, var(--dark) 0%, #0a0f18 50%, var(--darker) 100%); padding: 80px 24px 60px; text-align: center; position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; top: -200px; left: 50%; transform: translateX(-50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(247,147,26,0.12) 0%, transparent 70%); pointer-events: none; }
+.hero-badge { display: inline-block; background: rgba(247,147,26,0.15); border: 1px solid rgba(247,147,26,0.3); color: var(--bitcoin); padding: 6px 18px; border-radius: 100px; font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 28px; }
+.hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(32px, 5.5vw, 52px); font-weight: 900; line-height: 1.15; margin-bottom: 20px; color: #fff; }
+.hero h1 em { font-style: normal; background: linear-gradient(135deg, var(--bitcoin), var(--gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-sub { font-size: clamp(17px, 2.2vw, 20px); color: var(--text-muted); max-width: 620px; margin: 0 auto 36px; line-height: 1.6; }
+.cta-btn { display: inline-block; background: linear-gradient(135deg, var(--bitcoin), #E8850F); color: #fff; font-size: 18px; font-weight: 800; padding: 18px 48px; border-radius: 12px; text-decoration: none; letter-spacing: 0.3px; transition: all 0.3s ease; box-shadow: 0 4px 24px rgba(247,147,26,0.35); border: none; cursor: pointer; }
+.cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(247,147,26,0.5); }
+.hero-meta { margin-top: 20px; font-size: 14px; color: var(--text-muted); }
+.hero-meta span { display: inline-flex; align-items: center; gap: 6px; margin: 0 12px; }
+.price-tag { display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 24px; }
+.price-old { font-size: 22px; color: var(--text-muted); text-decoration: line-through; }
+.price-new { font-size: 48px; font-weight: 900; color: var(--green); }
+section { padding: 72px 0; }
+.section-dark { background: var(--dark); }
+.section-darker { background: var(--darker); }
+.section-accent { background: linear-gradient(135deg, rgba(247,147,26,0.06), rgba(247,147,26,0.02)); }
+.section-label { display: inline-block; color: var(--bitcoin); font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
+h2 { font-family: 'Playfair Display', serif; font-size: clamp(26px, 4vw, 38px); font-weight: 800; line-height: 1.2; margin-bottom: 16px; color: #fff; }
+h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; color: #fff; }
+.section-intro { font-size: 17px; color: var(--text-muted); max-width: 600px; margin-bottom: 40px; }
+.pain-card { background: var(--card); border: 1px solid var(--card-border); border-radius: 16px; padding: 32px; margin-bottom: 20px; transition: border-color 0.3s; }
+.pain-card:hover { border-color: rgba(247,147,26,0.3); }
+.pain-icon { width: 48px; height: 48px; background: rgba(247,147,26,0.12); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 16px; }
+.pain-card h3 { color: var(--bitcoin); }
+.pain-card p { color: var(--text-muted); font-size: 15px; }
+.chapter-item { display: flex; gap: 20px; padding: 24px 0; border-bottom: 1px solid var(--card-border); }
+.chapter-item:last-child { border-bottom: none; }
+.chapter-num { flex-shrink: 0; width: 44px; height: 44px; background: linear-gradient(135deg, var(--bitcoin), #E8850F); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 16px; color: #fff; }
+.chapter-item h3 { font-size: 17px; margin-bottom: 4px; }
+.chapter-item p { color: var(--text-muted); font-size: 14px; line-height: 1.6; }
+.author-box { display: flex; gap: 32px; align-items: flex-start; background: var(--card); border: 1px solid var(--card-border); border-radius: 16px; padding: 40px; }
+.author-avatar { flex-shrink: 0; width: 100px; height: 100px; background: linear-gradient(135deg, var(--bitcoin), #E8850F); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 40px; font-weight: 800; color: #fff; }
+.author-box h3 { font-size: 22px; margin-bottom: 4px; }
+.author-role { color: var(--bitcoin); font-size: 14px; font-weight: 600; margin-bottom: 12px; }
+.author-box p { color: var(--text-muted); font-size: 15px; }
+.testimonial-card { background: var(--card); border: 1px solid var(--card-border); border-radius: 16px; padding: 32px; margin-bottom: 20px; position: relative; }
+.testimonial-card::before { content: '\201C'; position: absolute; top: 16px; left: 24px; font-size: 48px; color: var(--bitcoin); opacity: 0.3; font-family: serif; line-height: 1; }
+.testimonial-text { font-size: 16px; font-style: italic; color: var(--text); margin-bottom: 16px; padding-top: 8px; }
+.testimonial-author { font-size: 14px; color: var(--text-muted); font-weight: 600; }
+.testimonial-note { display: inline-block; background: rgba(248,81,73,0.1); border: 1px solid rgba(248,81,73,0.3); color: var(--red); padding: 4px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; margin-top: 8px; }
+.stars { color: var(--gold); font-size: 16px; margin-bottom: 12px; }
+.bonus-card { background: var(--card); border: 1px solid var(--card-border); border-radius: 16px; padding: 28px 32px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; }
+.bonus-info h3 { font-size: 17px; margin-bottom: 2px; }
+.bonus-info p { color: var(--text-muted); font-size: 14px; }
+.bonus-value { background: rgba(63,185,80,0.1); border: 1px solid rgba(63,185,80,0.3); color: var(--green); padding: 6px 16px; border-radius: 8px; font-weight: 700; font-size: 16px; white-space: nowrap; }
+.total-box { background: linear-gradient(135deg, rgba(247,147,26,0.1), rgba(247,147,26,0.05)); border: 2px solid var(--bitcoin); border-radius: 16px; padding: 32px; text-align: center; margin-top: 32px; }
+.total-box .total-value { font-size: 18px; color: var(--text-muted); text-decoration: line-through; margin-bottom: 4px; }
+.total-box .total-price { font-size: 52px; font-weight: 900; color: var(--green); margin-bottom: 4px; }
+.total-box .total-save { font-size: 16px; color: var(--bitcoin); font-weight: 600; margin-bottom: 24px; }
+.guarantee-box { background: var(--card); border: 2px solid var(--green); border-radius: 20px; padding: 48px; text-align: center; }
+.guarantee-badge { width: 80px; height: 80px; background: rgba(63,185,80,0.12); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 36px; margin: 0 auto 20px; }
+.guarantee-box h2 { color: var(--green); }
+.guarantee-box p { color: var(--text-muted); font-size: 16px; max-width: 560px; margin: 0 auto; }
+.faq-item { background: var(--card); border: 1px solid var(--card-border); border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
+.faq-q { padding: 20px 24px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 700; font-size: 16px; transition: color 0.3s; }
+.faq-q:hover { color: var(--bitcoin); }
+.faq-q .arrow { transition: transform 0.3s; font-size: 20px; color: var(--bitcoin); }
+.faq-item.open .faq-q .arrow { transform: rotate(180deg); }
+.faq-a { padding: 0 24px 20px; color: var(--text-muted); font-size: 15px; display: none; }
+.faq-item.open .faq-a { display: block; }
+.final-cta { background: linear-gradient(180deg, var(--dark) 0%, #0a0f18 100%); padding: 80px 24px; text-align: center; position: relative; }
+.final-cta::before { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 500px; height: 500px; background: radial-gradient(circle, rgba(247,147,26,0.08) 0%, transparent 70%); pointer-events: none; }
+.urgency-banner { display: inline-block; background: rgba(248,81,73,0.12); border: 1px solid rgba(248,81,73,0.3); color: var(--red); padding: 8px 20px; border-radius: 8px; font-weight: 700; font-size: 14px; margin-bottom: 24px; }
+.countdown { display: flex; justify-content: center; gap: 16px; margin: 28px 0; }
+.countdown-unit { background: var(--card); border: 1px solid var(--card-border); border-radius: 12px; padding: 12px 20px; min-width: 72px; text-align: center; }
+.countdown-num { font-size: 28px; font-weight: 900; color: var(--bitcoin); font-variant-numeric: tabular-nums; }
+.countdown-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+footer { background: var(--darker); border-top: 1px solid var(--card-border); padding: 40px 24px; text-align: center; color: var(--text-muted); font-size: 13px; }
+footer p { margin-bottom: 8px; }
+footer a { color: var(--bitcoin); text-decoration: none; }
+@media (max-width: 640px) { .author-box { flex-direction: column; align-items: center; text-align: center; } .bonus-card { flex-direction: column; gap: 12px; text-align: center; } .countdown { gap: 8px; } .countdown-unit { min-width: 60px; padding: 10px 14px; } .countdown-num { font-size: 22px; } .guarantee-box { padding: 32px 24px; } section { padding: 52px 0; } }
+</style>
+</head><body>
+<div class="announcement"><span>LAUNCH SPECIAL — Get $90 off the regular price. Limited time only.</span></div>
+<section class="hero"><div class="container">
+<div class="hero-badge">Updated March 2026 &bull; 15 Chapters</div>
+<h1>You Promised Yourself You'd<br>Learn Bitcoin <em>By Now</em></h1>
+<p class="hero-sub">Stop watching from the sidelines. Get the plain-English guide that takes you from confused to confident in a weekend — without the jargon, without the risk, without the regret.</p>
+<div class="price-tag"><span class="price-old">$27</span><span class="price-new">$17</span></div>
+<a href="https://buy.stripe.com/8x2cN524UfFz6Um1HxeZ200" class="cta-btn">Get Instant Access for $17</a>
+<div class="hero-meta"><span>&#128274; Secure checkout</span><span>&#9889; Instant PDF download</span><span>&#128176; 60-day guarantee</span></div>
+</div></section>
+<section class="section-dark"><div class="container">
+<div class="section-label">Sound Familiar?</div>
+<h2>Three Fears Keeping You Stuck</h2>
+<p class="section-intro">If any of these hit home, this book was written for you.</p>
+<div class="pain-card"><div class="pain-icon">&#128200;</div><h3>Fear of Missing Out</h3><p>Everyone's talking about Bitcoin. Your friends have some. Every headline makes you feel like you're falling further behind. But the truth? It's not too late. Thousands of people are starting their Bitcoin journey right now.</p></div>
+<div class="pain-card"><div class="pain-icon">&#129327;</div><h3>Confusion &amp; Jargon Overwhelm</h3><p>You've tried to understand Bitcoin. But then someone mentions "seed phrases" or "HODL" or "blockchain" and your brain shuts down. The problem isn't you — it's that most resources are written by people who forgot what it's like to be a beginner.</p></div>
+<div class="pain-card"><div class="pain-icon">&#128272;</div><h3>Distrust &amp; Fear of Costly Mistakes</h3><p>Bitcoin feels risky. And you're right to be cautious. You want to understand the real risks, learn security practices that actually matter, and move forward with confidence — not fear.</p></div>
+</div></section>
+<section class="section-darker"><div class="container">
+<div class="section-label">What's Inside</div>
+<h2>Everything a Beginner Needs<br>(And Nothing They Don't)</h2>
+<p class="section-intro">15 chapters across two sections, written in plain English by someone who remembers what it's like to be new.</p>
+<div class="chapter-item"><div class="chapter-num">&#9889;</div><div><h3>Quick-Start Guide</h3><p>A 5-step action plan from zero to owning your first Bitcoin in about 2 hours.</p></div></div>
+<div class="chapter-item"><div class="chapter-num">1-2</div><div><h3>The Dawn of a New Financial Era</h3><p>Why Bitcoin isn't just another tech trend. How it's reshaping money, power, and financial freedom.</p></div></div>
+<div class="chapter-item"><div class="chapter-num">3</div><div><h3>Why the Old System Is Broken</h3><p>The history of fiat currency, the Federal Reserve, and why your savings are quietly losing value.</p></div></div>
+<div class="chapter-item"><div class="chapter-num">4</div><div><h3>How to Buy Bitcoin on Real Exchanges</h3><p>Coinbase, Kraken, Gemini — which to choose and how to make your first purchase without anxiety.</p></div></div>
+<div class="chapter-item"><div class="chapter-num">5</div><div><h3>Self-Custody &amp; Wallet Security</h3><p>Hardware wallets, seed phrases, backup strategies, and the exact steps to securing your Bitcoin.</p></div></div>
+<div class="chapter-item"><div class="chapter-num">6-13</div><div><h3>DeFi, Mining, Lightning Network &amp; ETFs</h3><p>The bigger Bitcoin ecosystem explained simply. What's worth paying attention to and what's hype.</p></div></div>
+<div class="chapter-item"><div class="chapter-num">8</div><div><h3>Wealth Accumulation Strategies</h3><p>Dollar-cost averaging, HODLing, and other proven approaches. No get-rich-quick nonsense.</p></div></div>
+<div style="text-align:center; margin-top: 40px;"><a href="https://buy.stripe.com/8x2cN524UfFz6Um1HxeZ200" class="cta-btn">Get All 15 Chapters for $17</a></div>
+</div></section>
+<section class="section-dark"><div class="container">
+<div class="section-label">About the Author</div>
+<div class="author-box"><div class="author-avatar">MC</div><div>
+<h3>Michael Cameron</h3>
+<div class="author-role">Founder, Skystone Services LLC &bull; In crypto since 2016</div>
+<p>Michael has been active in the cryptocurrency space since 2016. He's witnessed firsthand the explosive growth of Bitcoin, the development of DeFi, and the increasing adoption of crypto as a legitimate financial asset.</p><br>
+<p>His philosophy is simple: Bitcoin doesn't require a PhD in cryptography. It just needs to be explained clearly, by someone who remembers what it's like to be a beginner.</p>
+</div></div>
+</div></section><section class="section-darker"><div class="container">
+<div class="section-label">Reader Reviews</div>
+<h2>See What Readers Are Saying</h2><br>
+<div class="testimonial-card"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testimonial-text">"I felt like I was the last person on Earth who didn't understand Bitcoin. This book made it click for me in just two days."</p><div class="testimonial-author">— [Name], [Title/Location]</div><div class="testimonial-note">&#9888; REPLACE WITH REAL TESTIMONIAL</div></div>
+<div class="testimonial-card"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testimonial-text">"I've tried three other Bitcoin books. They were either too technical or felt like they were selling me something. This one just... teaches."</p><div class="testimonial-author">— [Name], [Title/Location]</div><div class="testimonial-note">&#9888; REPLACE WITH REAL TESTIMONIAL</div></div>
+<div class="testimonial-card"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testimonial-text">"At 52, I thought I was too old to learn this stuff. My kids kept telling me to just read Michael's book. Best advice they ever gave me."</p><div class="testimonial-author">— [Name], Age/Location</div><div class="testimonial-note">&#9888; REPLACE WITH REAL TESTIMONIAL</div></div>
+</div></section>
+<section class="section-accent" id="buy-now"><div class="container">
+<div class="section-label">What You Get Today</div>
+<h2>The Complete Launch Bundle</h2>
+<p class="section-intro">Everything you need to understand, buy, and secure Bitcoin — all in one package.</p>
+<div class="bonus-card"><div class="bonus-info"><h3>&#128214; The Complete Ebook (15 Chapters)</h3><p>Bitcoin: Everything You Need To Know To Participate In The Dawn of a New Financial Era</p></div><div class="bonus-value">$27</div></div>
+<div class="bonus-card"><div class="bonus-info"><h3>&#128737; Bitcoin Wallet Security Checklist</h3><p>Step-by-step guide to securing your wallet</p></div><div class="bonus-value">$19</div></div>
+<div class="bonus-card"><div class="bonus-info"><h3>&#128640; First 7 Steps Quick-Start Card</h3><p>Your exact roadmap for the first week of owning Bitcoin</p></div><div class="bonus-value">$14</div></div>
+<div class="bonus-card"><div class="bonus-info"><h3>&#128231; 90 Days of Email Newsletter Access</h3><p>Weekly Bitcoin updates — what's happening and what to watch for</p></div><div class="bonus-value">$47</div></div>
+<div class="total-box">
+<div class="total-value">Total Value: $107</div>
+<div class="total-price">$17</div>
+<div class="total-save">You save $90 during launch week</div>
+<a href="https://buy.stripe.com/8x2cN524UfFz6Um1HxeZ200" class="cta-btn" id="checkout-btn">Claim Your Copy + All Bonuses — $17</a>
+<div class="hero-meta" style="margin-top: 16px;"><span>&#128274; Secure Checkout</span><span>&#9889; Instant Download</span></div>
+</div>
+</div></section>
+<section class="section-dark"><div class="container">
+<div class="guarantee-box">
+<div class="guarantee-badge">&#128170;</div>
+<h2>60-Day Money-Back Guarantee</h2><br>
+<p>Read the entire book for the next 60 days. If you don't feel more confident about Bitcoin — send us an email. Full refund, no questions asked.</p><br>
+<p><strong style="color: #fff;">You have zero risk. The only thing you stand to lose is the confusion that's been keeping you stuck.</strong></p>
+</div>
+</div></section>
+<section class="section-darker"><div class="container">
+<div class="section-label">Common Questions</div>
+<h2>Frequently Asked Questions</h2><br>
+<div class="faq-item open"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">I've never owned Bitcoin before. Is this book really for me?<span class="arrow">&#9660;</span></div><div class="faq-a">This book is specifically written for people exactly like you — people who know Bitcoin exists, want to understand it, but haven't taken the first step yet. No prerequisites except curiosity.</div></div>
+<div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do I have to actually buy Bitcoin to get value from this book?<span class="arrow">&#9660;</span></div><div class="faq-a">No. This book teaches you the why and the how. If you decide Bitcoin isn't for you after reading, that's completely valid.</div></div>
+<div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is this investment advice?<span class="arrow">&#9660;</span></div><div class="faq-a">No. This is educational content. We are not telling you Bitcoin will make you rich. Bitcoin is volatile. Treat it with respect.</div></div>
+<div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How do I access the ebook once I buy it?<span class="arrow">&#9660;</span></div><div class="faq-a">Instantly. After purchase, you'll receive an email with a download link. Download the PDF and read it on any device.</div></div>
+<div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What if I want my money back?<span class="arrow">&#9660;</span></div><div class="faq-a">Send us an email within 60 days. Full refund, no questions asked.</div></div>
+</div></section><section class="final-cta"><div class="container">
+<div class="urgency-banner">&#9200; Launch pricing ends soon — then it's $27</div>
+<h2>You've Waited Long Enough</h2><br>
+<p style="color: var(--text-muted); font-size: 18px; max-width: 560px; margin: 0 auto 28px;">Understanding Bitcoin takes a weekend. Not a semester. Not a PhD. A weekend. This book was designed to be that weekend.</p>
+<div class="countdown" id="countdown">
+<div class="countdown-unit"><div class="countdown-num" id="cd-days">06</div><div class="countdown-label">Days</div></div>
+<div class="countdown-unit"><div class="countdown-num" id="cd-hours">23</div><div class="countdown-label">Hours</div></div>
+<div class="countdown-unit"><div class="countdown-num" id="cd-mins">59</div><div class="countdown-label">Minutes</div></div>
+<div class="countdown-unit"><div class="countdown-num" id="cd-secs">59</div><div class="countdown-label">Seconds</div></div>
+</div>
+<div class="price-tag"><span class="price-old">$27</span><span class="price-new">$17</span></div>
+<a href="https://buy.stripe.com/8x2cN524UfFz6Um1HxeZ200" class="cta-btn" style="font-size: 20px; padding: 20px 56px;">Get Bitcoin Clarity for $17</a>
+<div class="hero-meta" style="margin-top: 16px;"><span>&#128274; Secure</span><span>&#9889; Instant</span><span>&#128176; 60-day guarantee</span></div>
+</div></section>
+<footer><div class="container">
+<p><strong>BitcoinHomeBase.com</strong> &mdash; Bitcoin: Everything You Need To Know To Participate In The Dawn of a New Financial Era</p>
+<p>&copy; 2026 Skystone Services LLC. All rights reserved.</p>
+<p style="margin-top: 12px; font-size: 12px;">DISCLAIMER: This is an educational product. We are not financial advisors. The content does not constitute financial advice. Bitcoin carries significant risks. Always conduct your own research.</p>
+</div></footer>
+<script>
+(function() {
+  const endDate = new Date();
+  endDate.setDate(endDate.getDate() + 7);
+  endDate.setHours(23, 59, 59, 0);
+  function update() {
+    const now = new Date();
+    const diff = endDate - now;
+    if (diff <= 0) return;
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('cd-days').textContent = String(d).padStart(2, '0');
+    document.getElementById('cd-hours').textContent = String(h).padStart(2, '0');
+    document.getElementById('cd-mins').textContent = String(m).padStart(2, '0');
+    document.getElementById('cd-secs').textContent = String(s).padStart(2, '0');
+  }
+  update();
+  setInterval(update, 1000);
+})();
+</script>
+</body>
+</html>
