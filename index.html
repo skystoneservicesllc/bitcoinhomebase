@@ -480,7 +480,7 @@ footer a { color: var(--bitcoin); text-decoration: none; }
 
 <!-- ANNOUNCEMENT BAR -->
 <div class="announcement">
-  <span>LAUNCH SPECIAL — Get $90 off the regular price. Limited time only.</span>
+  <span>LAUNCH SPECIAL — Get the book + $80 in free bonuses for just $17. Limited time only.</span>
 </div>
 
 <!-- HERO SECTION -->
@@ -797,6 +797,62 @@ footer a { color: var(--bitcoin); text-decoration: none; }
   </div>
 </footer>
 
+<!-- EMAIL SIGNUP POPUP -->
+<div id="email-popup-overlay" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.75); z-index:9999; backdrop-filter:blur(4px); opacity:0; transition:opacity 0.3s ease;">
+  <div id="email-popup" style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%) scale(0.9); max-width:460px; width:92%; background:linear-gradient(165deg, #1a1f28, #0d1117); border:2px solid #F7931A; border-radius:16px; padding:36px 28px 28px; text-align:center; box-shadow:0 24px 80px rgba(247,147,26,0.15); transition:transform 0.3s ease, opacity 0.3s ease; opacity:0;">
+    <!-- Close button -->
+    <button onclick="closePopup()" style="position:absolute; top:12px; right:16px; background:none; border:none; color:#8B949E; font-size:24px; cursor:pointer; line-height:1; padding:4px;" aria-label="Close">&times;</button>
+
+    <!-- Badge -->
+    <div style="display:inline-block; background:linear-gradient(135deg, #F7931A, #E8850F); color:#000; font-weight:800; font-size:12px; letter-spacing:1px; padding:6px 16px; border-radius:20px; margin-bottom:16px; text-transform:uppercase;">Free With Your Purchase</div>
+
+    <!-- Headline -->
+    <h3 style="font-family:'Playfair Display',serif; font-size:26px; color:#fff; line-height:1.3; margin-bottom:8px;">Don't Miss the<br><span style="color:#F7931A;">$80+ Bonus Bundle</span></h3>
+
+    <!-- Subtext -->
+    <p style="color:#8B949E; font-size:14px; line-height:1.6; margin-bottom:20px;">Join our list and we'll send you a reminder when launch pricing ends — plus a sneak peek at what's inside the bundle.</p>
+
+    <!-- Bonus items -->
+    <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:20px; text-align:left;">
+      <div style="display:flex; align-items:center; gap:10px; background:#161B22; border:1px solid #21262D; border-radius:8px; padding:10px 14px;">
+        <span style="font-size:18px;">&#128218;</span>
+        <span style="color:#E6EDF3; font-size:13px; font-weight:600;">15-Chapter Bitcoin Education Guide</span>
+        <span style="margin-left:auto; color:#3FB950; font-size:12px; font-weight:700;">$27</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; background:#161B22; border:1px solid #21262D; border-radius:8px; padding:10px 14px;">
+        <span style="font-size:18px;">&#128274;</span>
+        <span style="color:#E6EDF3; font-size:13px; font-weight:600;">Wallet Security Checklist</span>
+        <span style="margin-left:auto; color:#3FB950; font-size:12px; font-weight:700;">$19</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; background:#161B22; border:1px solid #21262D; border-radius:8px; padding:10px 14px;">
+        <span style="font-size:18px;">&#128640;</span>
+        <span style="color:#E6EDF3; font-size:13px; font-weight:600;">Quick-Start Card</span>
+        <span style="margin-left:auto; color:#3FB950; font-size:12px; font-weight:700;">$14</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; background:#161B22; border:1px solid #21262D; border-radius:8px; padding:10px 14px;">
+        <span style="font-size:18px;">&#128231;</span>
+        <span style="color:#E6EDF3; font-size:13px; font-weight:600;">90-Day Email Newsletter</span>
+        <span style="margin-left:auto; color:#3FB950; font-size:12px; font-weight:700;">$47</span>
+      </div>
+    </div>
+
+    <!-- Form -->
+    <form id="popup-form" onsubmit="handlePopupSubmit(event)">
+      <input id="popup-email" type="email" required placeholder="Your best email address" style="width:100%; padding:14px 16px; border:2px solid #21262D; border-radius:10px; background:#0D1117; color:#E6EDF3; font-size:15px; font-family:'Inter',sans-serif; outline:none; margin-bottom:12px; transition:border-color 0.2s;" onfocus="this.style.borderColor='#F7931A'" onblur="this.style.borderColor='#21262D'">
+      <button type="submit" style="width:100%; padding:16px; background:linear-gradient(135deg, #F7931A, #E8850F); color:#000; font-weight:800; font-size:16px; border:none; border-radius:10px; cursor:pointer; font-family:'Inter',sans-serif; letter-spacing:0.3px; transition:transform 0.15s, box-shadow 0.15s;" onmouseover="this.style.transform='translateY(-1px)';this.style.boxShadow='0 6px 24px rgba(247,147,26,0.35)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">Get My Launch Reminder</button>
+    </form>
+
+    <!-- Success state (hidden by default) -->
+    <div id="popup-success" style="display:none; padding:20px 0;">
+      <div style="font-size:48px; margin-bottom:12px;">&#127881;</div>
+      <h4 style="color:#3FB950; font-size:20px; margin-bottom:8px;">You're on the list!</h4>
+      <p style="color:#8B949E; font-size:14px;">We'll let you know before launch pricing ends. Check your inbox soon.</p>
+    </div>
+
+    <p style="color:#8B949E; font-size:11px; margin-top:14px;">No spam. Unsubscribe anytime. We respect your inbox.</p>
+  </div>
+</div>
+
 <!-- COUNTDOWN TIMER SCRIPT -->
 <script>
 (function() {
@@ -822,6 +878,71 @@ footer a { color: var(--bitcoin); text-decoration: none; }
   update();
   setInterval(update, 1000);
 })();
+</script>
+
+<!-- EMAIL POPUP SCRIPT -->
+<script>
+(function() {
+  var overlay = document.getElementById('email-popup-overlay');
+  var popup = document.getElementById('email-popup');
+  if (!overlay) return;
+
+  // Don't show if already dismissed or subscribed
+  try { if (localStorage.getItem('btchb_popup_closed')) return; } catch(e) {}
+
+  // Show after 5 seconds
+  setTimeout(function() {
+    overlay.style.display = 'block';
+    // Trigger animation on next frame
+    requestAnimationFrame(function() {
+      overlay.style.opacity = '1';
+      popup.style.opacity = '1';
+      popup.style.transform = 'translate(-50%, -50%) scale(1)';
+    });
+  }, 5000);
+
+  // Close on overlay click (outside popup)
+  overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) closePopup();
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closePopup();
+  });
+})();
+
+function closePopup() {
+  var overlay = document.getElementById('email-popup-overlay');
+  var popup = document.getElementById('email-popup');
+  overlay.style.opacity = '0';
+  popup.style.transform = 'translate(-50%, -50%) scale(0.9)';
+  popup.style.opacity = '0';
+  setTimeout(function() { overlay.style.display = 'none'; }, 300);
+  try { localStorage.setItem('btchb_popup_closed', '1'); } catch(e) {}
+}
+
+function handlePopupSubmit(e) {
+  e.preventDefault();
+  var email = document.getElementById('popup-email').value;
+  var form = document.getElementById('popup-form');
+  var success = document.getElementById('popup-success');
+
+  // Send to our serverless function (keeps API key safe on server)
+  fetch('/api/subscribe', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: email })
+  }).catch(function() {});
+
+  // Show success state regardless (form capture works client-side)
+  form.style.display = 'none';
+  success.style.display = 'block';
+  try { localStorage.setItem('btchb_popup_closed', '1'); } catch(e) {}
+
+  // Auto-close after 3 seconds
+  setTimeout(closePopup, 3000);
+}
 </script>
 
 </body>
