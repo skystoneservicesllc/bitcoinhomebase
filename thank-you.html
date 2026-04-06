@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You're In! Download Your Bitcoin Bundle | BitcoinHomeBase.com</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bitcoin: #F7931A;
+  --bitcoin-dark: #E8850F;
+  --gold: #FFD700;
+  --dark: #0D1117;
+  --darker: #080B10;
+  --card: #161B22;
+  --card-border: #21262D;
+  --text: #E6EDF3;
+  --text-muted: #8B949E;
+  --green: #3FB950;
+  --blue: #58A6FF;
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--darker);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+.container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+/* ===== SUCCESS BANNER ===== */
+.success-banner {
+  background: linear-gradient(90deg, var(--green), #2ea043, var(--green));
+  color: #fff;
+  text-align: center;
+  padding: 12px 16px;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+}
+
+/* ===== HERO ===== */
+.hero {
+  background: linear-gradient(180deg, var(--dark) 0%, #0a0f18 50%, var(--darker) 100%);
+  padding: 60px 24px 50px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -200px; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(247,147,26,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.checkmark {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--green), #2ea043);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 28px;
+  box-shadow: 0 0 40px rgba(63,185,80,0.3);
+  animation: pop-in 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+@keyframes pop-in {
+  0% { transform: scale(0); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.checkmark svg { width: 40px; height: 40px; }
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 4.5vw, 42px);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 16px;
+  color: #fff;
+}
+.hero h1 span { color: var(--bitcoin); }
+.hero p {
+  font-size: 18px;
+  color: var(--text-muted);
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+/* ===== DOWNLOAD SECTION ===== */
+.download-section {
+  padding: 50px 24px;
+  text-align: center;
+}
+.download-card {
+  background: var(--card);
+  border: 2px solid var(--bitcoin);
+  border-radius: 16px;
+  padding: 40px 32px;
+  max-width: 560px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+.download-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--bitcoin), var(--gold), var(--bitcoin));
+}
+.download-card h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  margin-bottom: 8px;
+  color: #fff;
+}
+.download-card p {
+  color: var(--text-muted);
+  font-size: 15px;
+  margin-bottom: 24px;
+}
+.download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, var(--bitcoin), var(--bitcoin-dark));
+  color: #000;
+  font-size: 18px;
+  font-weight: 800;
+  padding: 18px 48px;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(247,147,26,0.35);
+}
+.download-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 28px rgba(247,147,26,0.5);
+}
+.download-btn svg { width: 22px; height: 22px; }
+.download-meta {
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* ===== WHAT YOU GOT ===== */
+.bundle-section {
+  padding: 40px 24px 50px;
+}
+.bundle-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(24px, 3.5vw, 32px);
+  text-align: center;
+  margin-bottom: 32px;
+  color: #fff;
+}
+.bundle-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.bundle-item {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  transition: border-color 0.3s;
+}
+.bundle-item:hover { border-color: var(--bitcoin); }
+.bundle-icon {
+  flex-shrink: 0;
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px;
+}
+.bundle-icon.book { background: rgba(247,147,26,0.15); }
+.bundle-icon.shield { background: rgba(63,185,80,0.15); }
+.bundle-icon.rocket { background: rgba(88,166,255,0.15); }
+.bundle-icon.mail { background: rgba(248,81,73,0.15); }
+.bundle-item h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: #fff;
+}
+.bundle-item .value {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--green);
+  margin-bottom: 4px;
+}
+.bundle-item p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ===== NEXT STEPS ===== */
+.next-steps {
+  padding: 40px 24px 50px;
+}
+.next-steps h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(24px, 3.5vw, 32px);
+  text-align: center;
+  margin-bottom: 12px;
+  color: #fff;
+}
+.next-steps > .container > p {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 16px;
+  margin-bottom: 32px;
+}
+.steps-list {
+  max-width: 560px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.step {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+.step-num {
+  flex-shrink: 0;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--bitcoin), var(--bitcoin-dark));
+  color: #000;
+  font-weight: 800;
+  font-size: 18px;
+  display: flex; align-items: center; justify-content: center;
+}
+.step-content h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 2px;
+}
+.step-content p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ===== QUOTE ===== */
+.quote-section {
+  padding: 40px 24px 50px;
+  text-align: center;
+}
+.quote-box {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 36px 32px;
+  max-width: 560px;
+  margin: 0 auto;
+  position: relative;
+}
+.quote-box::before {
+  content: '\201C';
+  font-family: 'Playfair Display', serif;
+  font-size: 80px;
+  color: var(--bitcoin);
+  opacity: 0.3;
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  line-height: 1;
+}
+.quote-box p {
+  font-size: 18px;
+  font-style: italic;
+  color: var(--text);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+.quote-box .author {
+  font-size: 14px;
+  font-style: normal;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* ===== SUPPORT ===== */
+.support {
+  padding: 30px 24px 20px;
+  text-align: center;
+}
+.support p {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+.support a {
+  color: var(--bitcoin);
+  text-decoration: none;
+}
+.support a:hover { text-decoration: underline; }
+
+/* ===== FOOTER ===== */
+footer {
+  background: var(--dark);
+  padding: 32px 24px;
+  text-align: center;
+  border-top: 1px solid var(--card-border);
+}
+footer p {
+  color: var(--text-muted);
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+footer strong { color: var(--text); }
+
+/* ===== CONFETTI ===== */
+.confetti-container {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+.confetti {
+  position: absolute;
+  top: -10px;
+  width: 10px; height: 10px;
+  opacity: 0;
+  animation: confetti-fall 3s ease-in-out forwards;
+}
+@keyframes confetti-fall {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+@media (max-width: 600px) {
+  .download-card { padding: 28px 20px; }
+  .download-btn { padding: 16px 32px; font-size: 16px; }
+  .bundle-item { flex-direction: column; text-align: center; align-items: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- SUCCESS BANNER -->
+<div class="success-banner">Payment Confirmed &mdash; Your Bitcoin Education Starts Now</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="checkmark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    </div>
+    <h1>Welcome to the <span>Bitcoin Revolution</span></h1>
+    <p>You just made one of the smartest investments in your financial future. While most people stay confused, you chose clarity.</p>
+  </div>
+</section>
+
+<!-- DOWNLOAD -->
+<section class="download-section">
+  <div class="container">
+    <div class="download-card">
+      <h2>Your Complete Bundle Is Ready</h2>
+      <p>Everything you need in one download &mdash; ebook + all bonus materials.</p>
+      <a href="/Bitcoin-Bonus-Bundle.zip" class="download-btn" download>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        Download Your Bundle
+      </a>
+      <div class="download-meta">ZIP file &bull; Includes PDF ebook + bonus materials &bull; Save to your device</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S INSIDE -->
+<section class="bundle-section">
+  <div class="container">
+    <h2>Here's What You Just Unlocked</h2>
+    <div class="bundle-grid">
+
+      <div class="bundle-item">
+        <div class="bundle-icon book">&#128218;</div>
+        <div>
+          <h3>Bitcoin: Everything You Need To Know</h3>
+          <div class="value">Your Complete Guide &bull; 81 Pages &bull; 15 Chapters</div>
+          <p>From "what is Bitcoin?" to confidently buying, storing, and understanding the technology behind it. Written in plain English, not Wall Street jargon.</p>
+        </div>
+      </div>
+
+      <div class="bundle-item">
+        <div class="bundle-icon shield">&#128737;</div>
+        <div>
+          <h3>Wallet Security Checklist</h3>
+          <div class="value">Bonus #1 &bull; Valued at $19</div>
+          <p>A comprehensive one-page checklist covering seed phrase security, device protection, exchange safety, transaction verification, and red flags to watch for.</p>
+        </div>
+      </div>
+
+      <div class="bundle-item">
+        <div class="bundle-icon rocket">&#128640;</div>
+        <div>
+          <h3>Bitcoin Quick-Start Card</h3>
+          <div class="value">Bonus #2 &bull; Valued at $14</div>
+          <p>Your first Bitcoin in 30 minutes &mdash; an 8-step action plan plus a quick-reference card with key terms, recommended hardware wallets, and golden rules.</p>
+        </div>
+      </div>
+
+      <div class="bundle-item">
+        <div class="bundle-icon mail">&#128231;</div>
+        <div>
+          <h3>90-Day Bitcoin Insider Newsletter</h3>
+          <div class="value">Bonus #3 &bull; Valued at $47</div>
+          <p>Market updates, strategy tips, and new developments delivered to your inbox. Stay informed and confident as you build your Bitcoin position.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- NEXT STEPS -->
+<section class="next-steps">
+  <div class="container">
+    <h2>Your Roadmap to Bitcoin Confidence</h2>
+    <p>Here's how to get the most out of your investment this week:</p>
+    <div class="steps-list">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3>Download &amp; save your bundle</h3>
+          <p>Click the download button above and save the ZIP file. Unzip it to find your ebook and bonus PDFs.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h3>Read Chapters 1-5 today</h3>
+          <p>Start with the foundations. In under an hour you'll understand what Bitcoin is, why it matters, and how it actually works.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3>Use the Quick-Start Card</h3>
+          <p>When you're ready to take action, follow the 8-step plan to buy your first Bitcoin. It takes about 30 minutes.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h3>Secure your investment</h3>
+          <p>Run through the Wallet Security Checklist before you go to sleep. Your future self will thank you.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MOTIVATIONAL QUOTE -->
+<section class="quote-section">
+  <div class="container">
+    <div class="quote-box">
+      <p>The best time to understand Bitcoin was 10 years ago. The second best time is right now. You just took that step.</p>
+      <div class="author">&mdash; Your future, financially-informed self</div>
+    </div>
+  </div>
+</section>
+
+<!-- SUPPORT -->
+<section class="support">
+  <div class="container">
+    <p>Questions or need help? Reach out anytime at <a href="mailto:skystoneservicesllc@gmail.com">skystoneservicesllc@gmail.com</a></p>
+    <p style="margin-top: 8px;">Remember: you have a <strong style="color: var(--green);">60-day money-back guarantee</strong>. Zero risk.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p><strong>BitcoinHomeBase.com</strong> &mdash; Bitcoin: Everything You Need To Know To Participate In The Dawn of a New Financial Era</p>
+    <p>&copy; 2026 Skystone Services LLC. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- CONFETTI ANIMATION ON LOAD -->
+<div class="confetti-container" id="confetti"></div>
+<script>
+(function() {
+  const container = document.getElementById('confetti');
+  const colors = ['#F7931A', '#FFD700', '#3FB950', '#58A6FF', '#E8850F', '#fff'];
+  for (let i = 0; i < 60; i++) {
+    const el = document.createElement('div');
+    el.className = 'confetti';
+    el.style.left = Math.random() * 100 + '%';
+    el.style.width = (Math.random() * 8 + 6) + 'px';
+    el.style.height = (Math.random() * 8 + 6) + 'px';
+    el.style.background = colors[Math.floor(Math.random() * colors.length)];
+    el.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+    el.style.animationDelay = (Math.random() * 2) + 's';
+    el.style.animationDuration = (Math.random() * 2 + 2) + 's';
+    container.appendChild(el);
+  }
+  setTimeout(() => container.remove(), 5000);
+})();
+</script>
+
+</body>
+</html>
