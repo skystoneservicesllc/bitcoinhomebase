@@ -373,17 +373,17 @@ footer strong { color: var(--text); }
 <section class="download-section">
   <div class="container">
     <div class="download-card">
-      <h2>Your Complete Bundle Is Ready</h2>
-      <p>Everything you need in one download &mdash; ebook + all bonus materials.</p>
-      <a href="/Bitcoin-Bonus-Bundle.zip" class="download-btn" download>
+      <h2 id="download-title">Preparing Your Bundle&hellip;</h2>
+      <p id="download-subtitle">Verifying your purchase &mdash; one moment.</p>
+      <a href="#" id="download-btn" class="download-btn" style="pointer-events:none; opacity:0.5;">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
           <polyline points="7 10 12 15 17 10"></polyline>
           <line x1="12" y1="15" x2="12" y2="3"></line>
         </svg>
-        Download Your Bundle
+        <span id="download-btn-text">Verifying&hellip;</span>
       </a>
-      <div class="download-meta">ZIP file &bull; Includes PDF ebook + bonus materials &bull; Save to your device</div>
+      <div id="download-meta" class="download-meta">Confirming your payment with Stripe</div>
     </div>
   </div>
 </section>
@@ -517,6 +517,64 @@ footer strong { color: var(--text); }
     container.appendChild(el);
   }
   setTimeout(() => container.remove(), 5000);
+})();
+</script>
+
+<!-- SECURE DOWNLOAD VERIFICATION -->
+<script>
+(async function() {
+  const btn = document.getElementById('download-btn');
+  const btnText = document.getElementById('download-btn-text');
+  const title = document.getElementById('download-title');
+  const subtitle = document.getElementById('download-subtitle');
+  const meta = document.getElementById('download-meta');
+
+  // Get session_id from URL (Stripe redirects with ?session_id=cs_xxx)
+  const params = new URLSearchParams(window.location.search);
+  const sessionId = params.get('session_id');
+
+  if (!sessionId) {
+    title.textContent = 'Check Your Email';
+    subtitle.textContent = 'Your secure download link was sent to the email you used at checkout.';
+    btnText.textContent = 'Check Your Inbox';
+    btn.href = 'https://mail.google.com';
+    btn.style.pointerEvents = 'auto';
+    btn.style.opacity = '1';
+    btn.removeAttribute('download');
+    meta.textContent = 'Link expires in 48 hours \u2022 3 downloads max \u2022 Tied to your purchase';
+    return;
+  }
+
+  try {
+    const response = await fetch('/api/verify-session', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ session_id: sessionId }),
+    });
+
+    if (!response.ok) throw new Error('Verification failed');
+
+    const data = await response.json();
+
+    // Enable the download button with the secure URL
+    title.textContent = 'Your Complete Bundle Is Ready';
+    subtitle.textContent = 'Everything you need in one download \u2014 ebook + all bonus materials.';
+    btn.href = data.downloadUrl;
+    btn.style.pointerEvents = 'auto';
+    btn.style.opacity = '1';
+    btnText.textContent = 'Download Your Bundle';
+    meta.innerHTML = 'Link expires in 48 hours &bull; 3 downloads max &bull; Also sent to <strong>' + data.email + '</strong>';
+
+  } catch (err) {
+    title.textContent = 'Check Your Email';
+    subtitle.textContent = 'We sent your secure download link to the email you used at checkout.';
+    btnText.textContent = 'Check Your Inbox';
+    btn.href = 'https://mail.google.com';
+    btn.style.pointerEvents = 'auto';
+    btn.style.opacity = '1';
+    btn.removeAttribute('download');
+    meta.textContent = 'If you don\u2019t see it, check spam. Or email skystoneservicesllc@gmail.com for help.';
+  }
 })();
 </script>
 
