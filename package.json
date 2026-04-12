@@ -1,5 +1,8 @@
 {
   "name": "bitcoinhomebase",
   "version": "1.0.0",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "redis": "^4.6.0"
+  }
 }
