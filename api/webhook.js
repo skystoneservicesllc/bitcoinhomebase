@@ -1,7 +1,25 @@
 import crypto from 'crypto';
 
+// CRITICAL: Disable Vercel's automatic body parsing
+// Required for Stripe webhook signature verification
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
+
 const DOWNLOAD_EXPIRY_HOURS = 48;
 const MAX_DOWNLOADS = 3;
+
+// Read raw body from request stream
+async function getRawBody(req) {
+  return new Promise((resolve, reject) => {
+    const chunks = [];
+    req.on('data', (chunk) => chunks.push(chunk));
+    req.on('end', () => resolve(Buffer.concat(chunks).toString('utf8')));
+    req.on('error', reject);
+  });
+}
 
 function generateSignedToken(email, sessionId) {
   const secret = process.env.WEBHOOK_SECRET || process.env.STRIPE_WEBHOOK_SECRET;
@@ -53,7 +71,7 @@ async function sendDownloadEmail(email, downloadUrl, customerName) {
             </div>
             <div style="background: #fff3cd; border: 1px solid #ffc107; border-radius: 6px; padding: 15px; margin: 20px 0;">
               <p style="color: #856404; margin: 0; font-size: 14px;">
-                <strong>Important:</strong> This download link expires in 48 hours and can be used up to 3 times. Please download your files soon!
+                <strong>Important:</strong> This download link expires in 48 hours and can be used up to 3 times.
               </p>
             </div>
           </div>
@@ -91,11 +109,18 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Missing signature or webhook secret' });
   }
 
+  // Read the raw body (required for signature verification)
+  let rawBody;
+  try {
+    rawBody = await getRawBody(req);
+  } catch (err) {
+    console.error('Failed to read raw body:', err);
+    return res.status(400).json({ error: 'Failed to read request body' });
+  }
+
   let event;
   try {
-    const rawBody = typeof req.body === 'string' ? req.body : JSON.stringify(req.body);
-
-    // Verify webhook signature manually (without Stripe SDK)
+    // Verify webhook signature
     const timestamp = sig.split(',').find(s => s.startsWith('t=')).split('=')[1];
     const signatures = sig.split(',').filter(s => s.startsWith('v1=')).map(s => s.split('=')[1]);
 
