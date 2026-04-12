@@ -38,10 +38,10 @@ export default async function handler(req, res) {
   try {
     // Verify the Checkout Session with Stripe API
     const stripeResponse = await fetch(
-      `https://api.stripe.com/v1/checkout/sessions/\${session_id}`,
+      `https://api.stripe.com/v1/checkout/sessions/${session_id}`,
       {
         headers: {
-          'Authorization': `Bearer \${process.env.STRIPE_SECRET_KEY}`,
+          'Authorization': `Bearer ${process.env.STRIPE_SECRET_KEY}`,
         },
       }
     );
@@ -67,7 +67,7 @@ export default async function handler(req, res) {
 
     return res.status(200).json({
       success: true,
-      downloadUrl: `/api/download?token=\${token}`,
+      downloadUrl: `/api/download?token=${token}`,
       email: email,
       expiresIn: '48 hours',
       maxDownloads: MAX_DOWNLOADS,
