@@ -165,9 +165,7 @@ export default async function handler(req, res) {
 
     try {
       const token = generateSignedToken(customerEmail, session.id);
-      const baseUrl = process.env.VERCEL_URL
-        ? `https://${process.env.VERCEL_URL}`
-        : 'https://bitcoinhomebase.com';
+      const baseUrl = 'https://www.bitcoinhomebase.com';
       const downloadUrl = `${baseUrl}/api/download?token=${token}`;
 
       await sendDownloadEmail(customerEmail, downloadUrl, customerName);
